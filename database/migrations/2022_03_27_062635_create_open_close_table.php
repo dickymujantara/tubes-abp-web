@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotificationsTable extends Migration
+class CreateOpenCloseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateNotificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('open_close', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user_to')->constrained('users');
-            $table->foreignId('id_user_from')->constrained('users');
-            $table->string('title');
-            $table->text('message');
-            $table->boolean("is_read")->default(0);
+            $table->integer('id_tourist_attraction');
+            $table->string('day');
+            $table->string('time');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateNotificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('open_close');
     }
 }

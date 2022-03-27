@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMediaTable extends Migration
+class CreateEstimatedCostsDetailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateMediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('estimated_costs_detail', function (Blueprint $table) {
             $table->id();
-            $table->binary('path_photo');
-            $table->string('label')->nullable();
-            $table->text('description')->nullable();
-            $table->boolean('is_active')->default(1);
+            $table->integer('id_est_costs');
+            $table->integer('id_tourist_attraction');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateMediaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media');
+        Schema::dropIfExists('estimated_costs_detail');
     }
 }

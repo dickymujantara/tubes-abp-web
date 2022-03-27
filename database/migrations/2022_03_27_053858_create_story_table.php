@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRfpLogsTable extends Migration
+class CreateStoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateRfpLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rfp_logs', function (Blueprint $table) {
+        Schema::create('story', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_rfp')->constrained('rfps');
+            $table->integer('id_user');
             $table->string('title');
-            $table->string('message');
-            $table->integer('status');
+            $table->string('content');
+            $table->string('image');
+            $table->integer('like_count');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateRfpLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rfp_logs');
+        Schema::dropIfExists('story');
     }
 }

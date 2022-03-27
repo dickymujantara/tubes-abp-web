@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRfpPhotosTable extends Migration
+class CreateEstimatedCostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateRfpPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('rfp_photos', function (Blueprint $table) {
+        Schema::create('estimated_costs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_rfp')->constrained('rfps');
-            $table->foreignId('id_media')->constrained('media');
-            $table->integer('status');
+            $table->integer('id_user');
+            $table->integer('total_costs');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateRfpPhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rfp_photos');
+        Schema::dropIfExists('estimated_costs');
     }
 }
