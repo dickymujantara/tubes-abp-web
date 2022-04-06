@@ -6,10 +6,18 @@
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{route('dashboard')}}"><i class="c-sidebar-nav-icon fa fa-tachometer-alt"></i> Dashboard</a>
-            <a class="c-sidebar-nav-link" href="{{route('list')}}"><i class="c-sidebar-nav-icon fa fa-tachometer-alt"></i> Visit List</a>
-            <a class="c-sidebar-nav-link" href="{{route('touristatraction')}}"><i class="c-sidebar-nav-icon fa fa-tachometer-alt"></i> Tourist Atraction</a>
-            <a class="c-sidebar-nav-link" href="{{route('story')}}"><i class="c-sidebar-nav-icon fa fa-tachometer-alt"></i> Story</a>
+            <a class="c-sidebar-nav-link" href="{{route('list')}}"><i class="c-sidebar-nav-icon fa fa-location"></i> Visit List</a>
+            <a class="c-sidebar-nav-link" href="{{route('touristatraction')}}"><i class="c-sidebar-nav-icon fa fa-location-arrow"></i> Tourist Atraction</a>
+            <a class="c-sidebar-nav-link" href="{{route('story')}}"><i class="c-sidebar-nav-icon fa fa-photo-video"></i> Story</a>
         </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown"><a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+            <i class="c-sidebar-nav-icon fa fa-users"></i> Users Management</a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{route('users-management')}}"><span class="c-sidebar-nav-icon"></span> Admin</a></li>  
+                <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{route('users-management.users')}}"><span class="c-sidebar-nav-icon"></span> Users</a></li>  
+            </ul>
+        </li>
+
         <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
