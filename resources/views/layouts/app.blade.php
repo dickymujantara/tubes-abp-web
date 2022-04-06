@@ -34,8 +34,8 @@
     <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <!-- Main styles for this application-->
-    <link href="{{asset('public/vendors/css/style.css')}}" rel="stylesheet">
-    <link href="{{asset('public/vendors/@coreui/chartjs/css/coreui-chartjs.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/vendors/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
     @stack('styles')
   </head>
   <body class="c-app">
