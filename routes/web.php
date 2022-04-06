@@ -20,8 +20,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::middleware('auth:web')->group(function(){
+Route::middleware('auth:web')->group(function(){
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/story', [App\Http\Controllers\StoryController::class, 'index'])->name('story');
+    Route::post('/detailstory', [App\Http\Controllers\StoryController::class, 'detail'])->name('detailstory');
     Route::post('/deletestory', [App\Http\Controllers\StoryController::class, 'delete'])->name('delete');
-// });
+});

@@ -34,10 +34,16 @@ Story
             <td><img src="{{ 'public/story/'. $story->image }}" style="width:300px; height:100px"></td>
             <td>{{ $story->like_count }}</td>
             <td>
+                <form action="{{route('detailstory')}}" method="post">
+                  @csrf
+                  <input type="hidden" name="id" value="{{ $story->id }}">
+                  <button class="btn btn-primary" style="width:100px; color: white;"> <i class="fa fa-eye"></i> Detail</button>
+                </form>
+                <br>
                 <form action="{{route('delete')}}" method="post">
                   @csrf
                   <input type="hidden" name="id" value="{{ $story->id }}">
-                  <input type="submit" name="submit" class="btn btn-danger" value="Hapus">
+                  <button class="btn btn-danger" style="width:100px; color: white;"> <i class="fa fa-trash"></i> Delete</button>
                 </form>
             </td>
         </tr>

@@ -13,8 +13,20 @@ class StoryController extends Controller
         return view('story.index', ['storys'=>$storys]);
     }
 
+    public function detail(Request $request){
+        $id = $request->id;
+        $storys = DB::table('story')
+        ->where('id', '=', $id)
+        ->get();
+
+        return view('story.detail', ['storys'=>$storys]);
+    }
+
     public function delete(Request $request){
         $id = $request->id;
-        echo $id;
+        DB::table('story')
+        ->where('id', '=', $id)
+        ->delete();
+        return redirect('story');
     }
 }
