@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::middleware('auth:web')->group(function(){
+Route::middleware('auth:web')->group(function(){
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/list', [App\Http\Controllers\listController::class, 'index'])->name('list');
     Route::get('/touristatraction', [App\Http\Controllers\listController::class, 'touristatraction'])->name('touristatraction');
     Route::post('/taupdate', [App\Http\Controllers\listController::class, 'taupdate'])->name('taupdate');
     Route::post('/taupdateproses', [App\Http\Controllers\listController::class, 'taupdateproses'])->name('taupdateproses');
 
-// });
-
+    Route::get('/story', [App\Http\Controllers\StoryController::class, 'index'])->name('story');
+    Route::post('/detailstory', [App\Http\Controllers\StoryController::class, 'detail'])->name('detailstory');
+    Route::post('/deletestory', [App\Http\Controllers\StoryController::class, 'delete'])->name('delete');
+});

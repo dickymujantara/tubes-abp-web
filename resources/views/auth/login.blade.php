@@ -55,8 +55,8 @@
                     <div class="input-group mb-3">
                         <div class="input-group-prepend"><span class="input-group-text">
                           <i class="c-icon fa fa-user"></i></span></div>
-                          <input id="username" class="form-control @error('username') is-invalid @enderror" name="username" type="text" placeholder="Username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-                          @error('username')
+                          <input id="email" class="form-control @error('email') is-invalid @enderror" name="email" type="text" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                          @error('email')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
