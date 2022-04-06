@@ -13,18 +13,21 @@ class RegisterController extends Controller
 
     public function Register(Request $request)
     {
-        if ($request->password == $request->conPassword) {
-            $request['password'] = Hash::make($request->password);
-            $store = User::create($request->all());
-            $success['code'] = $this->status;
-            $success['message'] = "Success";
-            $success['data'] = $store;
-
-            return response()->json($success, 200);
-
-        }else{
-            return response()->json(['code' => 400,'error'=>'Baq Request'], 400); 
+        try {
+            if ($request->password == $request->conPassword) {
+                $request['password'] = Hash::make($request->password);
+                $store = User::create($request->all());
+                $success['code'] = $this->status;
+                $success['message'] = "Success";
+                $success['data'] = $store;
+    
+                return response()->json($success, 200);
+    
+            }else{
+                return response()->json(['code' => 400,'error'=>'Baq Request'], 400); 
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['code' => 500,'error'=>$th], 500); 
         }
-
     }
 }
