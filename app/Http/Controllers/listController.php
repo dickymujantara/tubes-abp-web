@@ -13,5 +13,33 @@ class listController extends Controller
         return view('list.index', ['lists'=>$lists]);
     
     }
+
+    public function touristatraction(){
+        $tas = DB::table('tourist_attraction')
+            ->get();
+        return view('list.touristatraction', ['tas'=>$tas]);
+
+    }
     
+    public function taupdate(Request $request){
+        $id = $request->id;
+        $tas = DB::table('tourist_attraction')
+        ->where('id','=',$id)
+        ->get();
+        return view('list.taupdate', ['tas'=>$tas]);
+
+    }
+    public function taupdateproses(Request $request){
+        $id = $request->id;
+        $name = $request->name;
+        $address = $request->address;
+        
+        DB::table('tourist_attraction')
+       ->where('id','=',$id)
+       ->update([
+           'name'=>$name,
+           'address'=>$address,
+       ]);
+        return redirect('touristatraction');
+    }
 }
