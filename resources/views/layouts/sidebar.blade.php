@@ -6,6 +6,7 @@
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{route('dashboard')}}"><i class="c-sidebar-nav-icon fa fa-tachometer-alt"></i> Dashboard</a>
+            <a class="c-sidebar-nav-link" href="{{route('story')}}"><i class="c-sidebar-nav-icon fa fa-tachometer-alt"></i> Story</a>
         </li>
         <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault();

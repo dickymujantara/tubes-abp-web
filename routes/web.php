@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,6 @@ Auth::routes();
 
 // Route::middleware('auth:web')->group(function(){
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/story', [App\Http\Controllers\StoryController::class, 'index'])->name('story');
+    Route::post('/deletestory', [App\Http\Controllers\StoryController::class, 'delete'])->name('delete');
 // });
