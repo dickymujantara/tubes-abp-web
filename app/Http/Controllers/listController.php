@@ -33,12 +33,20 @@ class listController extends Controller
         $id = $request->id;
         $name = $request->name;
         $address = $request->address;
-        
+        $phone = $request->phone;
+        $email = $request->email_contact;
+        $web = $request->website;
+        $ticket = $request->ticket;
+
         DB::table('tourist_attraction')
        ->where('id','=',$id)
        ->update([
            'name'=>$name,
            'address'=>$address,
+           'phone'=>$phone,
+           'email_contact'=>$email,
+           'website_information'=>$web,
+           'ticket_price'=>$ticket,
        ]);
         return redirect('touristatraction');
     }
