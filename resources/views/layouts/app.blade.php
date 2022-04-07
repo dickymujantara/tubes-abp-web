@@ -15,7 +15,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Azuan - @yield('title')</title>
+    <title>Touristenziel Bandung - @yield('title')</title>
     <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
@@ -34,8 +34,9 @@
     <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <!-- Main styles for this application-->
-    <link href="{{ asset('public/vendors/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
+    <link href="{{asset('public/vendors/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('public/vendors/@coreui/chartjs/css/coreui-chartjs.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('public/vendors/datatables/datatables.min.css')}}">    
     @stack('styles')
   </head>
   <body class="c-app">
@@ -98,8 +99,9 @@
     <script src="{{asset('public/vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js')}}"></script>
     <script src="{{asset('public/vendors/@coreui/utils/js/coreui-utils.js')}}"></script>
     <script src="{{asset('public/vendors/js/main.js')}}"></script>
-    <script src="https://kit.fontawesome.com/07dd11fffc.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/75953294b6.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="{{asset('public/vendors/datatables/datatables.min.js')}}"></script>
     @stack('scripts')
   </body>
 </html>
