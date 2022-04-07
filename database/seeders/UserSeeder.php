@@ -25,8 +25,23 @@ class UserSeeder extends Seeder
             'has_verified_email' => 1,
             'email_verification_token' => null,
             'email_verified_at' => now(),
+            'role' => "GENERAL",
+            'created_at' => now(),
+            'updated_at' => now()
+        ],
+        [
+            'name' => 'Admin',
+            'address' => 'Bandung',
+            'username' => 'admin2',
+            'email' => 'admin2@example.com',
+            'password' => Hash::make('qwerty123'),
+            'has_verified_email' => 1,
+            'email_verification_token' => null,
+            'email_verified_at' => now(),
+            'role' => "ADMIN",
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        
     }
 }
