@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TouristAttractionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +26,6 @@ Route::middleware('auth:web')->group(function(){
 
     // List tour(Raisul)
     Route::get('/list', [App\Http\Controllers\listController::class, 'index'])->name('list');
-    Route::get('/touristatraction', [App\Http\Controllers\listController::class, 'touristatraction'])->name('touristatraction');
     Route::post('/taupdate', [App\Http\Controllers\listController::class, 'taupdate'])->name('taupdate');
     Route::post('/taupdateproses', [App\Http\Controllers\listController::class, 'taupdateproses'])->name('taupdateproses');
 
@@ -34,6 +34,12 @@ Route::middleware('auth:web')->group(function(){
     Route::post('/detailstory', [App\Http\Controllers\StoryController::class, 'detail'])->name('detailstory');
     Route::post('/deletestory', [App\Http\Controllers\StoryController::class, 'delete'])->name('delete');
 
+
+    //TOURIST ATTRACTION
+    Route::get('/tourist/attraction', [TouristAttractionController::class, 'index'])->name('touristatraction');
+    Route::get('/tourist/attraction/add', [TouristAttractionController::class, 'add'])->name('touristAttractionAdd');
+    Route::post('tourist/attraction/created', [TouristAttractionController::class, 'create'])->name('touristAttractionCreate');
+  
     // Users Management (Dicky)
     Route::get("/users-management/admin",[App\Http\Controllers\Users\AdminController::class, 'index'])->name('users-management');
     Route::get("/users-management/admin/list",[App\Http\Controllers\Users\AdminController::class, 'getList'])->name('users-management.list');
