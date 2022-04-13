@@ -90,7 +90,7 @@ class listController extends Controller
         return response()->json($visit);
     }
 
-    public function deletestory($id){
+    public function delete($id){
         $visit = VisitList::findOrFail($id);
 
         $visit->delete();
