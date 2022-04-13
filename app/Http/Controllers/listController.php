@@ -73,4 +73,27 @@ class listController extends Controller
         $visit = VisitList::orderBy('id','ASC')->get();
         return response()->json($visit);
     }
+
+    public function edit($id){
+        $visit = VisitList::findOrFail($id);
+        return response()->json($visit);
+    }
+
+    public function update(Request $request,$id){
+        $visit = VisitList::findOrFail($id);
+
+        $visit->id_user = $request->input('id_user');
+        $visit->id_tourist_attraction = $request->input('id_tourist_attraction');
+        $visit->visit_date = $request->input('visit_date');
+   
+        $visit->save();
+        return response()->json($visit);
+    }
+
+    public function deletestory($id){
+        $visit = VisitList::findOrFail($id);
+
+        $visit->delete();
+        return response()->json($visit);
+    }
 }
