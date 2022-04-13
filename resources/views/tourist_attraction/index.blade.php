@@ -15,50 +15,80 @@ tourist atraction
 @endsection
 
 @section('container')
-
-    <button class="btn btn-primary">
-      <a href="{{ route('touristAttractionAdd') }}" style="color: white; text-decoration: none" >Tambah Data</a>
-    </button>
-    
-    <table class="table table-bordered">
-    <thead class="table-dark">
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nama</th>
-      <th scope="col">Address</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Email Contact</th>
-      <th scope="col">Website Information</th>
-      <th scope="col">Ticket Price</th>
-      <th scope="col">Review</th>
-      <th scope="col">Full Review</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($touristAttractions as $touristAttraction)    
-    <tr>
-        <th scope="row">{{ $touristAttraction->id }}</th>
-        <td>{{ $touristAttraction->name }}</td>
-        <td>{{ $touristAttraction->address }}</td>
-        <td>{{ $touristAttraction->phone }}</td>
-        <td>{{ $touristAttraction->email_contact }}</td>
-        <td>{{ $touristAttraction->website_information }}</td>
-        <td>{{ $touristAttraction->ticket_price }}</td>
-        <td></td>
-        <td>{{ $touristAttraction->full_review }}</td>
-        <td>
-            <form action="{{route('taupdate')}}" method="post">
-              @csrf
-              <input type="hidden" name="id" value="{{ $touristAttraction->id }}">
-              <input type="submit" name="submit" class="btn btn-primary" value="Update">
-            </form>
-        </td>
-        </tr>
-    @endforeach 
-
-  </tbody>
-    </table>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                  <div class="col-10">
+                    <i class="fas fa-location-arrow"></i>
+                    <span>Tourist Attraction</span>
+                  </div>
+                  <div class="col-2">
+                    <button class="btn btn-primary">
+                      <a href="{{ route('touristAttractionAdd') }}" style="color: white; text-decoration: none" >Tambah Data</a>
+                    </button>
+                  </div>
+                </div>
+                
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                  <th>No.</th>
+                                  <th>Nama</th>
+                                  <th>Gambar</th>
+                                  <th>Alamat</th>
+                                  <th>No. Telp</th>
+                                  <th>Email</th>
+                                  <th>Website</th>
+                                  <th>Harga Tiket</th>
+                                  <th>Rating</th>
+                                  <th colspan="2" style="text-align: center;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($touristAttractions as $touristAttraction)    
+                                <tr>
+                                  <td>{{ $touristAttraction->id }}</td>
+                                  <td>{{ $touristAttraction->name }}</td>
+                                  <td>
+                                    <img src="{{ asset($touristAttraction->image) }}" alt="img" width="48px" height="48px"/>
+                                  </td>
+                                  <td>{{ $touristAttraction->address }}</td>
+                                  <td>{{ $touristAttraction->phone }}</td>
+                                  <td>{{ $touristAttraction->email_contact }}</td>
+                                  <td>{{ $touristAttraction->website_information }}</td>
+                                  <td>Rp{{ number_format($touristAttraction->ticket_price) ?? '-' }}</td>
+                                  <td>{{ $touristAttraction->rating }} </td>
+                                  <td>
+                                      <form action="{{route('touristAttractionEdit', $touristAttraction->id)}}" method="post">
+                                        @csrf
+                                        @method('put')
+                                        <input type="submit" name="submit" class="btn btn-primary" value="Update">
+                                      </form>
+                                  </td>
+                                  <td>
+                                      <form action="{{route('touristAttractionDelete', $touristAttraction->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <input type="hidden" name="id" value="{{ $touristAttraction->id }}">
+                                        <input type="submit" name="submit" class="btn btn-danger" value="Hapus">
+                                      </form>
+                                  </td>
+                                </tr>
+                            @endforeach  
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('scripts')

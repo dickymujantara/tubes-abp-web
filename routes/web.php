@@ -39,6 +39,9 @@ Auth::routes();
     Route::get('/tourist/attraction', [TouristAttractionController::class, 'index'])->name('touristatraction');
     Route::get('/tourist/attraction/add', [TouristAttractionController::class, 'add'])->name('touristAttractionAdd');
     Route::post('tourist/attraction/created', [TouristAttractionController::class, 'create'])->name('touristAttractionCreate');
+    Route::get('/tourist/attraction/{id}/edit', [TouristAttractionController::class, 'edit'])->name('touristAttractionEdit');
+    Route::put('tourist/attraction/{id}/updated', [TouristAttractionController::class, 'update'])->name('touristAttractionUpdate');
+    Route::delete('tourist/attraction/{id}/delete', [TouristAttractionController::class, 'deleteTouristAttraction'])->name('touristAttractionDelete');
   
     // Users Management (Dicky)
     Route::get("/users-management/admin",[App\Http\Controllers\Users\AdminController::class, 'index'])->name('users-management');
