@@ -24,6 +24,14 @@ Route::patch('edit/story/{id}',[App\Http\Controllers\StoryController::class, 'ed
 Route::post('update/story/{id}',[App\Http\Controllers\StoryController::class, 'update']);
 Route::delete('delete/story/{id}',[App\Http\Controllers\StoryController::class, 'deletestory']);
 
+
+//CRUD visit list
+Route::post('create/visit',[App\Http\Controllers\listController::class, 'create']);
+Route::get('read/visit',[App\Http\Controllers\listController::class, 'read']);
+Route::patch('edit/visit/{id}',[App\Http\Controllers\listController::class, 'edit']);
+Route::post('update/visit/{id}',[App\Http\Controllers\listController::class, 'update']);
+Route::delete('delete/visit/{id}',[App\Http\Controllers\listController::class, 'delete']);
+
 Route::middleware('auth:api')->group(function(){
     
 });
