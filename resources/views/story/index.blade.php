@@ -31,7 +31,7 @@ Story
             <th scope="row">{{ $story->id }}</th>
             <td>{{ $story->title }}</td>
             <td>{{ $story->content }}</td>
-            <td><img src="{{ 'public/story/'. $story->image }}" style="width:300px; height:100px"></td>
+            <td><img src="{{ 'storage/app/public/'. $story->image }}" style="width:300px; height:100px"></td>
             <td>{{ $story->like_count }}</td>
             <td>
                 <form action="{{route('detailstory')}}" method="post">
