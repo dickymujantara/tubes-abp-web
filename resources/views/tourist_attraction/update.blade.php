@@ -20,51 +20,52 @@ tourist atraction
     <div class="card">
       <div class="card-header">
         <i class="fas fa-location-arrow"></i>
-        <span>Tambah Wisata</span>
+        <span>Edit Wisata</span>
       </div>
       <div class="card-body">
         <div class="row">
           <div class="col-12">
-            <form action="{{route('touristAttractionCreate')}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('touristAttractionUpdate', $tourist_attraction->id) }}" method="post" enctype="multipart/form-data">
               @csrf
+              @method('put')
               <div class="row form-group">
                 <div class="col-12">
                   <label for="name" class="form-label">Nama Wisata *</label>
-                  <input type="text" class="form-control" id="name" name="name">
+                  <input type="text" class="form-control" id="name" name="name" value="{{ $tourist_attraction->name }}">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-12">
                   <label for="address" class="form-label">Alamat *</label>
-                  <input type="text" class="form-control" id="address" name="address">
+                  <input type="text" class="form-control" id="address" name="address" value="{{ $tourist_attraction->address }}">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-6">
                   <label for="phone" class="form-label">No. Telp</label>
-                  <input type="text" class="form-control" id="phone" name="phone">
+                  <input type="text" class="form-control" id="phone" name="phone"  value="{{ $tourist_attraction->phone }}">
                 </div>
 
                 <div class="col-6">
                   <label for="emailContact" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="email_contact" name="email_contact">
+                  <input type="text" class="form-control" id="email_contact" name="email_contact" value="{{ $tourist_attraction->email_contact }}">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-6">
                   <label for="websiteInformation" class="form-label">Website</label>
-                  <input type="text" class="form-control" id="website" name="website">
+                  <input type="text" class="form-control" id="website" name="website" value="{{ $tourist_attraction->website_information }}">
                 </div>
 
                 <div class="col-6">
                   <label for="ticket" class="form-label">Harga Tiket</label>
-                  <input type="text" class="form-control" id="ticket" name="ticket">
+                  <input type="text" class="form-control" id="ticket" name="ticket" value="{{ $tourist_attraction->ticket_price }}">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-12">
                   <label for="image" class="form-label">Gambar *</label>
-                  <input type="file" class="form-control" id="image" name="image">
+                  <input type="file" class="form-control" id="image" name="image" value="{{ $tourist_attraction->image }}">
                 </div>
               </div>
               <div class="text-right">
