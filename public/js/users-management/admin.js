@@ -57,11 +57,11 @@ function loadData() {
                     return val ? "<h6>" + date + " " + time  + "</h6>": "-";
                 }
             },
-            { name: 'id', data: 'id', render: function (val, type, data, meta)
-                {
-                    return '<div class="btn-group btn-group-sm"><a class="btn btn-circle btn-info btn-xs" data-toggle="modal" data-target="#modal-detail" data-toggle="modal" href="#modal-project" title="Detail" href="javascript:void(0)" onclick=\"detail(\''+ val +'\')"><i class="fa fa-eye" aria-hidden="true"></i></a></div>'
-                }
-            },
+            // { name: 'id', data: 'id', render: function (val, type, data, meta)
+            //     {
+            //         return '<div class="btn-group btn-group-sm"><a class="btn btn-circle btn-info btn-xs" data-toggle="modal" data-target="#modal-detail" data-toggle="modal" href="#modal-project" title="Detail" href="javascript:void(0)" onclick=\"detail(\''+ val +'\')"><i class="fa fa-eye" aria-hidden="true"></i></a></div>'
+            //     }
+            // },
         ], 
         columnDefs: [            
             {

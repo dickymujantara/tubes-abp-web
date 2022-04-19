@@ -1,6 +1,38 @@
+var idUser = ""
 $(document).ready(function () {
     loadData()
 });
+
+function detail(id){
+    $.ajax({
+        type: "GET",
+        url: urlDetail,
+        data: {id : id},
+        success: function (response) {
+            idUser = id
+            $("#id-detail").text(response.data.id);            
+            $("#name-detail").text(response.data.name);            
+            $("#email-detail").text(response.data.email);            
+            $("#username-detail").text(response.data.username);            
+            $("#address-detail").text(response.data.address);            
+            $("#status-detail").val(response.data.has_verified_email.toString());            
+        }
+    });
+}
+
+function update(){
+    let status = $("#status-detail").val();
+    $.ajax({
+        type: "POST",
+        url: urlUpdate,
+        data: {id : idUser, status : status, _token : token},
+        success: function (response) {
+            idUser = ""
+            alert("Update Status Berhasil!")
+            loadData()
+        }
+    });
+}
 
 function loadData() {
     
@@ -88,7 +120,7 @@ function loadData() {
             },
             { name: 'id', data: 'id', render: function (val, type, data, meta)
                 {
-                    return '<div class="btn-group btn-group-sm"><a class="btn btn-circle btn-info btn-xs" data-toggle="modal" data-target="#modal-detail" data-toggle="modal" href="#modal-project" title="Detail" href="javascript:void(0)" onclick=\"detail(\''+ val +'\')"><i class="fa fa-eye" aria-hidden="true"></i></a></div>'
+                    return '<div class="btn-group btn-group-sm"><a class="btn btn-circle btn-info btn-xs" data-toggle="modal" data-target="#modal-users" data-toggle="modal" href="#modal-project" title="Detail" href="javascript:void(0)" onclick=\"detail(\''+ val +'\')"><i class="fa fa-eye" aria-hidden="true"></i></a></div>'
                 }
             },
         ], 

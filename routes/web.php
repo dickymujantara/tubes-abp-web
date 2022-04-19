@@ -50,4 +50,5 @@ Auth::routes();
     Route::get("/users-management/users",[App\Http\Controllers\Users\UsersController::class, 'index'])->name('users-management.users');
     Route::get("/users-management/users/list",[App\Http\Controllers\Users\UsersController::class, 'getList'])->name('users-management.users.list');
     Route::get("/users-management/users/detail",[App\Http\Controllers\Users\UsersController::class, 'getDetail'])->name('users-management.users.detail');
+    Route::post("/users-management/users/update",[App\Http\Controllers\Users\UsersController::class, 'update'])->name('users-management.users.update');
 });
