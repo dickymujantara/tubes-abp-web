@@ -35,4 +35,8 @@ class TouristAttraction extends Model
         
         return $rating;
     }
+
+    public function openclose() {
+        return $this->hasMany(OpenClose::class, 'id_tourist_attraction', 'id');
+    }
 }
