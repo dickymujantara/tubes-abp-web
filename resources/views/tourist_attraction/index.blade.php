@@ -43,31 +43,34 @@ tourist atraction
                                   <th>Gambar</th>
                                   <th>Alamat</th>
                                   <th>No. Telp</th>
-                                  <th>Email</th>
-                                  <th>Website</th>
+                                  <!-- <th>Email</th> -->
+                                  <!-- <th>Website</th> -->
                                   <th>Harga Tiket</th>
                                   <th>Rating</th>
                                   <th colspan="2" style="text-align: center;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php
+                              $i = 1;
+                            ?>
                             @foreach($touristAttractions as $touristAttraction)    
                                 <tr>
-                                  <td>{{ $touristAttraction->id }}</td>
+                                  <td>{{ $i++ }}</td>
                                   <td>{{ $touristAttraction->name }}</td>
                                   <td>
-                                    <img src="{{ asset($touristAttraction->image) }}" alt="img" width="48px" height="48px"/>
+                                    <img src="{{ asset('public' . $touristAttraction->image) }}" alt="img" width="100px" height="100px"/>
                                   </td>
                                   <td>{{ $touristAttraction->address }}</td>
                                   <td>{{ $touristAttraction->phone }}</td>
-                                  <td>{{ $touristAttraction->email_contact }}</td>
-                                  <td>{{ $touristAttraction->website_information }}</td>
+                                  <!-- <td>{{ $touristAttraction->email_contact }}</td> -->
+                                  <!-- <td>{{ $touristAttraction->website_information }}</td> -->
                                   <td>Rp{{ number_format($touristAttraction->ticket_price) ?? '-' }}</td>
                                   <td>{{ $touristAttraction->rating }} </td>
                                   <td>
                                       <form action="{{route('touristAttractionEdit', $touristAttraction->id)}}" method="post">
                                         @csrf
-                                        @method('put')
+                                        @method('get')
                                         <input type="submit" name="submit" class="btn btn-primary" value="Update">
                                       </form>
                                   </td>

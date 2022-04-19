@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OpenClose;
 use App\Models\TouristAttraction;
 use App\Services\UploadFile;
 use Illuminate\Http\Request;
@@ -21,7 +22,6 @@ class TouristAttractionController extends Controller
     }
 
     public function create(Request $request) {
-        
         $request->validate([
             'name' => 'required',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
@@ -47,11 +47,29 @@ class TouristAttractionController extends Controller
         $touristAttraction->ticket_price = $request->ticket;
         $touristAttraction->save();
 
+        $openCloseCount = count($request->day);
+        $day = $request->day;
+        $open = $request->open;
+        $close = $request->close;
+
+        for($i = 0; $i < $openCloseCount; $i++) {
+            if ($day[$i] == null|| $open[$i] == null || $close[$i] == null) {
+                continue;
+            }
+
+            $openClose = new OpenClose;
+            $openClose->id_tourist_attraction = $touristAttraction->id;
+            $openClose->day = $day[$i];
+            $openClose->open = $open[$i];
+            $openClose->close = $close[$i];
+            $openClose->save();
+        }
+
         return redirect()->route('touristatraction');
     }
 
     public function edit($id) {
-        $touristAttraction = TouristAttraction::where('id', $id)->first();
+        $touristAttraction = TouristAttraction::with('openclose')->where('id', $id)->first();
 
         return view('tourist_attraction.update', [
             'tourist_attraction' => $touristAttraction
@@ -60,6 +78,7 @@ class TouristAttractionController extends Controller
 
     public function update(Request $request, $id) {
         $touristAttraction = TouristAttraction::where('id', $id)->first();
+        OpenClose::where('id_tourist_attraction', $id)->truncate();
 
         if ($request->has('name')) {
             $touristAttraction->name = $request->name;
@@ -96,6 +115,24 @@ class TouristAttractionController extends Controller
         }
 
         $touristAttraction->save();
+
+        $openCloseCount = count($request->day);
+        $day = $request->day;
+        $open = $request->open;
+        $close = $request->close;
+
+        for($i = 0; $i < $openCloseCount; $i++) {
+            if ($day[$i] == null|| $open[$i] == null || $close[$i] == null) {
+                continue;
+            }
+
+            $openClose = new OpenClose;
+            $openClose->id_tourist_attraction = $id;
+            $openClose->day = $day[$i];
+            $openClose->open = $open[$i];
+            $openClose->close = $close[$i];
+            $openClose->save();
+        }
 
         return redirect()->route('touristatraction');
     }

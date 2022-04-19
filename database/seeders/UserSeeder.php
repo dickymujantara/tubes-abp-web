@@ -28,12 +28,13 @@ class UserSeeder extends Seeder
             'role' => "GENERAL",
             'created_at' => now(),
             'updated_at' => now()
-        ],
-        [
+        ]);
+        
+        DB::table('users')->insert([
             'name' => 'Admin',
             'address' => 'Bandung',
             'username' => 'admin2',
-            'email' => 'admin2@example.com',
+            'email' => 'admin@example.com',
             'password' => Hash::make('qwerty123'),
             'has_verified_email' => 1,
             'email_verification_token' => null,
@@ -42,6 +43,6 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        
+
     }
 }
