@@ -40,4 +40,18 @@ class UsersController extends Controller
             return response()->json($th);
         }
     }
+
+    public function update(Request $request)
+    {
+        try {
+            
+            $update = User::where(["id" => $request->id])->update(["has_verified_email" => $request->status]);
+
+            return response()->json($update, 200);
+
+        } catch (\Throwable $th) {
+            return response()->json($th);
+        }
+    }
+
 }

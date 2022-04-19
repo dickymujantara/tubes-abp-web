@@ -48,13 +48,17 @@ Dashboard
 </div>
 @endsection
 
+@include("users-management.modal-users")
+
 @push('scripts')
 <script src="{{asset('public/js/users-management/users.js')}}"></script>
 
 <script>
     var table = null
+    var token = "{{csrf_token()}}"
     var urlList = "{{route('users-management.users.list')}}"
     var urlDetail = "{{route('users-management.users.detail')}}"
+    var urlUpdate = "{{route('users-management.users.update')}}"
 </script>
 
 @endpush
