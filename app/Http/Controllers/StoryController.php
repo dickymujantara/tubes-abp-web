@@ -11,6 +11,7 @@ class StoryController extends Controller
 {
     public function index(){
         $storys = DB::table('story')
+            ->join('users', 'story.id_user', '=', 'users.id')
             ->get();
         return view('story.index', ['storys'=>$storys]);
     }
@@ -61,7 +62,7 @@ class StoryController extends Controller
     }
 
     public function read(){
-        $story = Story::orderBy('id','ASC')->get();
+        $story = Story::join('users', 'story.id_user', '=', 'users.id')->orderBy('id','ASC')->get();
         return response()->json($story);
     }
 
