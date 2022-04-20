@@ -18,6 +18,7 @@ Story
     <thead class="table-dark">
       <tr>
         <th scope="col">ID</th>
+        <th scope="col">NAMA USER</th>
         <th scope="col">TITLE</th>
         <th scope="col">CONTENT</th>
         <th scope="col">IMAGE</th>
@@ -29,6 +30,7 @@ Story
       @foreach($storys as $story)
         <tr>
             <th scope="row">{{ $story->id }}</th>
+            <th>{{ $story->name }}</th>
             <td>{{ $story->title }}</td>
             <td>{{ $story->content }}</td>
             <td><img src="{{ 'storage/app/public/'. $story->image }}" style="width:300px; height:100px"></td>
