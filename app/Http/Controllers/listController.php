@@ -10,6 +10,8 @@ class listController extends Controller
 {
     public function index(){
         $lists = DB::table('visit_list')
+        ->join('users', 'visit_list.id_user', '=', 'users.id')
+        ->join('tourist_attraction', 'visit_list.id_tourist_attraction', '=', 'tourist_attraction.id')
             ->get();
         return view('list.index', ['lists'=>$lists]);
     
@@ -70,7 +72,8 @@ class listController extends Controller
     }
 
     public function read(){
-        $visit = VisitList::orderBy('id','ASC')->get();
+        $visit = VisitList::join('users', 'visit_list.id_user', '=', 'users.id')
+        ->join('tourist_attraction', 'visit_list.id_tourist_attraction', '=', 'tourist_attraction.id')->orderBy('id','ASC')->get();
         return response()->json($visit);
     }
 

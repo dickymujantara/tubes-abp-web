@@ -19,8 +19,8 @@ list
     <table class="table table-bordered">
     <thead class="table-dark">
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">ID User</th>
+      <th scope="col">Id</th>
+      <th scope="col">Nama User</th>
       <th scope="col">Tourist Attraction</th>
       <th scope="col">Visit Date</th>
     </tr>
@@ -29,8 +29,8 @@ list
     @foreach($lists as $list)    
         <tr>
         <th scope="row">{{$list->id}}</th>
-        <td>{{$list->id_user}}</td>
-        <td>{{$list->id_tourist_attraction}}</td>
+        <td>{{$list->username}}</td>
+        <td>{{$list->name}}</td>
         <td>{{$list->visit_date}}</td>
         </tr>
     @endforeach 
