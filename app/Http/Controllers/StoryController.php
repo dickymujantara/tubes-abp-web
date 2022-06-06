@@ -62,7 +62,7 @@ class StoryController extends Controller
     }
 
     public function read(){
-        $story = Story::join('users', 'story.id_user', '=', 'users.id')->orderBy('id','ASC')->get();
+        $story = Story::join('users', 'story.id_user', '=', 'users.id')->orderBy('story.id','ASC')->get();
         return response()->json($story);
     }
 
