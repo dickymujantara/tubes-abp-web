@@ -20,11 +20,11 @@ Route::post('register/admin',[App\Http\Controllers\Api\Auth\RegisterController::
 
 // Route::middleware('auth:api')->group(function(){
     //CRUD API
-    Route::post('create/story',[App\Http\Controllers\StoryController::class, 'create']);
+    Route::post('create/story',[App\Http\Controllers\Api\StoryController::class, 'create']);
     Route::get('read/story',[App\Http\Controllers\Api\StoryController::class, 'readStories']);
-    Route::patch('edit/story/{id}',[App\Http\Controllers\StoryController::class, 'edit']);
-    Route::post('update/story/{id}',[App\Http\Controllers\StoryController::class, 'update']);
-    Route::delete('delete/story/{id}',[App\Http\Controllers\StoryController::class, 'deletestory']);
+    Route::patch('edit/story/{id}',[App\Http\Controllers\Api\StoryController::class, 'edit']);
+    Route::post('update/story/{id}',[App\Http\Controllers\Api\StoryController::class, 'update']);
+    Route::delete('delete/story/{id}',[App\Http\Controllers\Api\StoryController::class, 'deletestory']);
 
 
     //CRUD visit list
