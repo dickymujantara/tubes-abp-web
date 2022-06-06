@@ -18,7 +18,7 @@ Route::post('register',[App\Http\Controllers\Api\Auth\RegisterController::class,
 Route::post('register/admin',[App\Http\Controllers\Api\Auth\RegisterController::class, 'RegisterAdmin']);
 
 
-Route::middleware('auth:api')->group(function(){
+// Route::middleware('auth:api')->group(function(){
     //CRUD API
     Route::post('create/story',[App\Http\Controllers\StoryController::class, 'create']);
     Route::get('read/story',[App\Http\Controllers\Api\StoryController::class, 'read']);
@@ -34,4 +34,4 @@ Route::middleware('auth:api')->group(function(){
     Route::post('update/visit/{id}',[App\Http\Controllers\listController::class, 'update']);
     Route::delete('delete/visit/{id}',[App\Http\Controllers\listController::class, 'delete']);
 
-});
+// });
