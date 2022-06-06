@@ -19,7 +19,7 @@ class StoryController extends Controller
             $success['message'] = "Success";
             $success['data'] = $data;
 
-            return response()->json($data, 200);
+            return response()->json($success, 200);
         } catch (\Exception $e) {
             return response()->json($e, 500);
         }
