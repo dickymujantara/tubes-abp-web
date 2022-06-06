@@ -13,7 +13,8 @@ class StoryController extends Controller
     public function readStories(Request $request)
     {
         try {
-            $data = Story::join('users', 'story.id_user', '=', 'users.id')
+            $data = Story::select('users.username','users.name','story.*')
+                ->join('users', 'story.id_user', '=', 'users.id')
                 ->orderBy('story.id','ASC')->get();
             $success['code'] = $this->status;
             $success['message'] = "Success";
