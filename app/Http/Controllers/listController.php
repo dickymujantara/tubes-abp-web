@@ -73,7 +73,7 @@ class listController extends Controller
 
     public function read(){
         $visit = VisitList::join('users', 'visit_list.id_user', '=', 'users.id')
-        ->join('tourist_attraction', 'visit_list.id_tourist_attraction', '=', 'tourist_attraction.id')->orderBy('id','ASC')->get();
+        ->join('tourist_attraction', 'visit_list.id_tourist_attraction', '=', 'tourist_attraction.id')->orderBy('visit_list.id','ASC')->get();
         return response()->json($visit);
     }
 
