@@ -10,7 +10,8 @@ class TouristAttraction extends Model
     use HasFactory;
     protected $table = 'tourist_attraction';
     protected $appends = [
-        'rating'
+        'rating',
+        'imageurl'
     ];
 
     public function getratingAttribute() {
@@ -20,7 +21,7 @@ class TouristAttraction extends Model
         $twoStar = $this->review_two_star;
         $oneStar = $this->review_one_star;
 
-        if ($fiveStar == null || $fourStar == null || $threeStar == null || $twoStar == null || $oneStar == null) {
+        if ($fiveStar == null && $fourStar == null && $threeStar == null && $twoStar == null && $oneStar == null) {
             return '-';
         } 
 
@@ -33,10 +34,16 @@ class TouristAttraction extends Model
 
         $rating = ($avgFive + $avgFour + $avgThree + $avgTwo + $avgOne) / $totalRating;
         
-        return $rating;
+        return (float) $rating;
+    }
+    
+    public function getimageurlAttribute() {
+        return (env('APP_ENV') == 'local') ? env('LOCAL_URL') . $this->image : env('PROD_URL') . $this->image;
     }
 
     public function openclose() {
         return $this->hasMany(OpenClose::class, 'id_tourist_attraction', 'id');
     }
+
+    
 }

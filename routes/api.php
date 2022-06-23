@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\TouristAttraction\TouristAttractionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,5 +37,8 @@ Route::delete('delete/visit/{id}',[App\Http\Controllers\listController::class, '
 
 Route::get('user/profile/{id}',[App\Http\Controllers\Api\Auth\ProfileController::class, 'getProfile']);
 Route::post('user/profile/{id}',[App\Http\Controllers\Api\Auth\ProfileController::class, 'updateProfile']);
+
+    //Tourist Attraction Endpoint
+    Route::get('tourist/attraction/list', [TouristAttractionController::class, 'touristAttractionList']);
 
 // });
