@@ -14,7 +14,7 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
         try {
-            $profile = Profile::where('id_user', Auth::user()->id)->update([
+            $profile = Profile::where(['id_user' => Auth::user()->id])->update([
                 "phone_number" => $request->phoneNumber,
                 "address" => $request->address,
             ]);
