@@ -11,10 +11,10 @@ class ProfileController extends Controller
 {
     protected $status = 200;
 
-    public function getProfile()
+    public function updateProfile(Request $request)
     {
         try {
-            $profile = Profile::where('id_user', $request->id)->update([
+            $profile = Profile::where('id_user', Auth::user()->id)->update([
                 "phone_number" => $request->phoneNumber,
                 "address" => $request->address,
             ]);
@@ -30,7 +30,7 @@ class ProfileController extends Controller
         }
     }
 
-    public function updateProfile(Request $request)
+    public function getProfile()
     {
         try {
             $profile = Profile::select()->where(['id_user' => Auth::user()->id])->first();
