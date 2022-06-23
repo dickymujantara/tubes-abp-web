@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -17,6 +18,10 @@ class RegisterController extends Controller
             if ($request->password == $request->conPassword) {
                 $request['password'] = Hash::make($request->password);
                 $store = User::create($request->all());
+                $profile = Profile::create([
+                    'id_user' => $store->id,
+                ]);
+
                 $success['code'] = $this->status;
                 $success['message'] = "Success";
                 $success['data'] = $store;

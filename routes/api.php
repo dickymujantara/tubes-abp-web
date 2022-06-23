@@ -20,18 +20,21 @@ Route::post('register/admin',[App\Http\Controllers\Api\Auth\RegisterController::
 
 // Route::middleware('auth:api')->group(function(){
     //CRUD API
-    Route::post('create/story',[App\Http\Controllers\Api\StoryController::class, 'create']);
-    Route::get('read/story',[App\Http\Controllers\Api\StoryController::class, 'readStories']);
-    Route::patch('edit/story/{id}',[App\Http\Controllers\Api\StoryController::class, 'edit']);
-    Route::post('update/story/{id}',[App\Http\Controllers\Api\StoryController::class, 'update']);
-    Route::delete('delete/story/{id}',[App\Http\Controllers\Api\StoryController::class, 'deletestory']);
+Route::post('create/story',[App\Http\Controllers\Api\StoryController::class, 'create']);
+Route::get('read/story',[App\Http\Controllers\Api\StoryController::class, 'readStories']);
+Route::patch('edit/story/{id}',[App\Http\Controllers\Api\StoryController::class, 'edit']);
+Route::post('update/story/{id}',[App\Http\Controllers\Api\StoryController::class, 'update']);
+Route::delete('delete/story/{id}',[App\Http\Controllers\Api\StoryController::class, 'deletestory']);
 
 
-    //CRUD visit list
-    Route::post('create/visit',[App\Http\Controllers\listController::class, 'create']);
-    Route::get('read/visit',[App\Http\Controllers\listController::class, 'read']);
-    Route::patch('edit/visit/{id}',[App\Http\Controllers\listController::class, 'edit']);
-    Route::post('update/visit/{id}',[App\Http\Controllers\listController::class, 'update']);
-    Route::delete('delete/visit/{id}',[App\Http\Controllers\listController::class, 'delete']);
+//CRUD visit list
+Route::post('create/visit',[App\Http\Controllers\listController::class, 'create']);
+Route::get('read/visit',[App\Http\Controllers\listController::class, 'read']);
+Route::patch('edit/visit/{id}',[App\Http\Controllers\listController::class, 'edit']);
+Route::post('update/visit/{id}',[App\Http\Controllers\listController::class, 'update']);
+Route::delete('delete/visit/{id}',[App\Http\Controllers\listController::class, 'delete']);
+
+Route::get('user/profile',[App\Http\Controllers\Api\Auth\ProfileController::class, 'getProfile']);
+Route::post('user/profile/update',[App\Http\Controllers\Api\Auth\ProfileController::class, 'updateProfile']);
 
 // });
