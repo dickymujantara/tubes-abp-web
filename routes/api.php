@@ -34,7 +34,7 @@ Route::patch('edit/visit/{id}',[App\Http\Controllers\listController::class, 'edi
 Route::post('update/visit/{id}',[App\Http\Controllers\listController::class, 'update']);
 Route::delete('delete/visit/{id}',[App\Http\Controllers\listController::class, 'delete']);
 
-Route::get('user/profile',[App\Http\Controllers\Api\Auth\ProfileController::class, 'getProfile']);
-Route::post('user/profile/update',[App\Http\Controllers\Api\Auth\ProfileController::class, 'updateProfile']);
+Route::get('user/profile/{id}',[App\Http\Controllers\Api\Auth\ProfileController::class, 'getProfile']);
+Route::post('user/profile/{id}',[App\Http\Controllers\Api\Auth\ProfileController::class, 'updateProfile']);
 
 // });
