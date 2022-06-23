@@ -18,7 +18,6 @@ class ProfileController extends Controller
                 "phone_number" => $request->phoneNumber,
                 "address" => $request->address,
             ]);
-;
 
             $success['code'] = $this->status;
             $success['message'] = "Success";
