@@ -38,6 +38,8 @@ class ProfileController extends Controller
             $success['message'] = "Success";
             $success['data'] = $profile;
 
+
+            return response()->json($success, 200);
         } catch (\Throwable $th) {
             return response()->json(['code' => 500,'error'=>$th], 500); 
         }
