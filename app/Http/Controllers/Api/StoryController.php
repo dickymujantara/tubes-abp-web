@@ -39,15 +39,17 @@ class StoryController extends Controller
 
         $filename = "";
         if($request->hasfile('image')){
-            $filename = $request->file('image')->store('story', 'public');
+            $filename = $request->file('image');
         }else{
             $filename = NULL;
         }
 
+        $encodeImg = base64_encode(file_get_contents($filename));
+
         $story->id_user = $request->input('id_user');
         $story->title = $request->input('title');
         $story->content = $request->input('content');
-        $story->image = $filename;
+        $story->image = $encodeImg;
         $story->like_count = $request->input('like_count');
 
         $story->save();
@@ -70,22 +72,18 @@ class StoryController extends Controller
     public function update(Request $request,$id){
         $story = Story::findOrFail($id);
 
-        $destination = public_path("storage\\".$story->image);
         $filename = "";
         if($request->hasfile('image')){
-            if(File::exists($destination)){
-                File::delete($destination);
-            }
-
-            $filename = $request->file('image')->store('story', 'public');
+            $filename = $request->file('image');
         }else{
             $filename = $request->image;
         }
+        $encodeImg = base64_encode(file_get_contents($filename));
 
         $story->id_user = $request->input('id_user');
         $story->title = $request->input('title');
         $story->content = $request->input('content');
-        $story->image = $filename;
+        $story->image = $encodeImg;
         $story->like_count = $request->input('like_count');
 
         $story->save();
@@ -98,11 +96,6 @@ class StoryController extends Controller
 
     public function deletestory($id){
         $story = Story::findOrFail($id);
-
-        $destination = public_path("storage\\".$story->image);
-        if(File::exists($destination)){
-            File::delete($destination);
-        }
 
         $story->delete();
         $success['code'] = $this->status;

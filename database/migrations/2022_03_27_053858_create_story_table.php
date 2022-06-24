@@ -18,7 +18,7 @@ class CreateStoryTable extends Migration
             $table->integer('id_user');
             $table->string('title');
             $table->string('content');
-            $table->string('image');
+            $table->longText('image');
             $table->integer('like_count');
             $table->timestamps();
         });
