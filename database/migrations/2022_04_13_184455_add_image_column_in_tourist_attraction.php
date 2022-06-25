@@ -14,7 +14,7 @@ class AddImageColumnInTouristAttraction extends Migration
     public function up()
     {
         Schema::table('tourist_attraction', function (Blueprint $table) {
-            $table->string('image')->nullable()->after('name');
+            $table->longText('image')->nullable()->after('name');
         });
     }
 
