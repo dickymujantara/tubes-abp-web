@@ -31,7 +31,6 @@ class ProfileController extends Controller
 
             $success['code'] = $this->status;
             $success['message'] = "Success";
-            $success['data'] = $id;
             $success['data'] = $user;
             $success['data']['profile'] = $profile;
 

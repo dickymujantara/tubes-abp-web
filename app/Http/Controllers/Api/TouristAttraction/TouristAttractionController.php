@@ -8,12 +8,15 @@ use Illuminate\Http\Request;
 
 class TouristAttractionController extends Controller
 {
+    protected $status = 200;
+
     public function touristAttractionList() 
     {
         $touristAttractionList = TouristAttraction::with('openclose')->get();
-        
-        return response()->json(
-            $touristAttractionList
-        , 200);
+        $success['code'] = $this->status;
+        $success['message'] = "Success";
+        $success['data'] = $touristAttractionList;
+
+        return response()->json($success, 200);
     }
 }
