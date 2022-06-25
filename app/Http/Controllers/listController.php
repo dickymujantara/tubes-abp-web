@@ -8,6 +8,8 @@ use App\Models\VisitList;
 
 class listController extends Controller
 {
+    protected $status = 200;
+
     public function index(){
         $lists = DB::table('visit_list')
         ->join('users', 'visit_list.id_user', '=', 'users.id')
@@ -72,9 +74,20 @@ class listController extends Controller
     }
 
     public function read(){
-        $visit = VisitList::join('users', 'visit_list.id_user', '=', 'users.id')
-        ->join('tourist_attraction', 'visit_list.id_tourist_attraction', '=', 'tourist_attraction.id')->orderBy('visit_list.id','ASC')->get();
-        return response()->json($visit);
+        try {
+            $visit = VisitList::select('visit_list.*',"users.name", "tourist_attraction.*")->join('users', 'visit_list.id_user', '=', 'users.id')
+            ->join('tourist_attraction', 'visit_list.id_tourist_attraction', '=', 'tourist_attraction.id')->orderBy('visit_list.id','ASC')->get();
+
+            $success['code'] = $this->status;
+            $success['message'] = "Success";
+            $success['data'] = $visit;
+
+            return response()->json($success);
+
+        } catch (\Exception $e) {
+            return response()->json(['code' => 500,'error'=>$e->getMessage()], 500); 
+        }
+       
     }
 
     public function edit($id){
