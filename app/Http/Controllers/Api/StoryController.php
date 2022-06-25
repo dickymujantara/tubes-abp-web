@@ -76,14 +76,7 @@ class StoryController extends Controller
 
     public function update(Request $request,$id){
         $story = Story::findOrFail($id);
-
-        $filename = "";
-        if($request->hasfile('image')){
-            $filename = $request->file('image');
-        }else{
-            $filename = $request->image;
-        }
-        $encodeImg = base64_encode(file_get_contents($filename));
+        $encodeImg = base64_encode(file_get_contents($request->file('image')));
 
         $story->id_user = $request->input('id_user');
         $story->title = $request->input('title');
