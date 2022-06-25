@@ -27,37 +27,42 @@ class StoryController extends Controller
     }
 
     public function create(Request $request){
-        $story = new Story();
+        try {
+            $story = new Story();
 
-        $request -> validate([
-            'id_user'=>'required',
-            'title'=>'required',
-            'content'=>'required',
-            'image'=>'required|max:2056||mimes:jpg,png,jpeg',
-            'like_count'=>'required',
-        ]);
+            $request -> validate([
+                'id_user'=>'required',
+                'title'=>'required',
+                'content'=>'required',
+                'image'=>'required|max:2056||mimes:jpg,png,jpeg',
+                'like_count'=>'required',
+            ]);
 
-        $filename = "";
-        if($request->hasfile('image')){
-            $filename = $request->file('image');
-        }else{
-            $filename = NULL;
+            $filename = "";
+            if($request->hasfile('image')){
+                $filename = $request->file('image');
+            }else{
+                $filename = NULL;
+            }
+
+            $encodeImg = base64_encode(file_get_contents($filename));
+
+            $story->id_user = $request->input('id_user');
+            $story->title = $request->input('title');
+            $story->content = $request->input('content');
+            $story->image = $encodeImg;
+            $story->like_count = $request->input('like_count');
+
+            $story->save();
+
+            $success['code'] = $this->status;
+            $success['message'] = "Success";
+            $success['data'] = $story;
+
+            return response()->json($success);
+        } catch (\Exception $e) {
+            return response()->json($e->getMessage(), 500);
         }
-
-        $encodeImg = base64_encode(file_get_contents($filename));
-
-        $story->id_user = $request->input('id_user');
-        $story->title = $request->input('title');
-        $story->content = $request->input('content');
-        $story->image = $encodeImg;
-        $story->like_count = $request->input('like_count');
-
-        $story->save();
-
-        $success['code'] = $this->status;
-        $success['message'] = "Success";
-        $success['data'] = $story;
-        return response()->json($success);
     }
 
     public function edit($id){
