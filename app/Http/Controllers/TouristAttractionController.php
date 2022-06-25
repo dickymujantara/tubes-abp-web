@@ -46,6 +46,7 @@ class TouristAttractionController extends Controller
         $touristAttraction->email_contact = $request->email_contact;
         $touristAttraction->website_information = $request->website;
         $touristAttraction->ticket_price = $request->ticket;
+        $touristAttraction->full_review = $request->review;
         $touristAttraction->save();
 
         $openCloseCount = count($request->day);
@@ -92,7 +93,7 @@ class TouristAttractionController extends Controller
                 @unlink($file);
             }
             
-            $touristAttraction->image = UploadFile::image($request->file('image'));
+            $touristAttraction->image = base64_encode(file_get_contents($request->file('image')));
         }
 
         if ($request->has('address')) {
