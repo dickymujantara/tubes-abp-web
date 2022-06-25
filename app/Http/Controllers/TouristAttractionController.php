@@ -39,7 +39,8 @@ class TouristAttractionController extends Controller
 
         $touristAttraction = new TouristAttraction();
         $touristAttraction->name = $request->name;
-        $touristAttraction->image = UploadFile::image($request->file('image'));
+        // $touristAttraction->image = UploadFile::image($request->file('image'));
+        $touristAttraction->image = base64_encode(file_get_contents($request->file('image')));
         $touristAttraction->address = $request->address;
         $touristAttraction->phone = $request->phone;
         $touristAttraction->email_contact = $request->email_contact;
