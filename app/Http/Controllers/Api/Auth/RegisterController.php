@@ -21,6 +21,7 @@ class RegisterController extends Controller
                 $profile = Profile::create([
                     'id_user' => $store->id,
                     'address' => $store->address,
+                    'phone_number' => "",
                 ]);
 
                 $success['code'] = $this->status;
