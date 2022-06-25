@@ -20,6 +20,7 @@ class RegisterController extends Controller
                 $store = User::create($request->all());
                 $profile = Profile::create([
                     'id_user' => $store->id,
+                    'address' => $store->address,
                 ]);
 
                 $success['code'] = $this->status;
