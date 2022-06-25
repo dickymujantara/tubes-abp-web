@@ -75,7 +75,7 @@ class listController extends Controller
 
     public function read(){
         try {
-            $visit = VisitList::select('visit_list.*',"users.name", "tourist_attraction.*")->join('users', 'visit_list.id_user', '=', 'users.id')
+            $visit = VisitList::select('visit_list.*',"users.name as fullname", "tourist_attraction.name as placeName", "tourist_attraction.address","tourist_attraction.image")->join('users', 'visit_list.id_user', '=', 'users.id')
             ->join('tourist_attraction', 'visit_list.id_tourist_attraction', '=', 'tourist_attraction.id')->orderBy('visit_list.id','ASC')->get();
 
             $success['code'] = $this->status;
