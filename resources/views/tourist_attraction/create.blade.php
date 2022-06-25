@@ -61,6 +61,12 @@ tourist atraction
                   <input type="text" class="form-control" id="ticket" name="ticket">
                 </div>
               </div>
+
+              <div class="col-12">
+                <label for="ticket" class="form-label">Deskripsi *</label>
+                <textarea name="review" id="review" cols="30" rows="10" class="form-control"></textarea>
+              </div>
+
               <div class="row form-group">
                 <div class="col-12">
                   <table class="table table">
