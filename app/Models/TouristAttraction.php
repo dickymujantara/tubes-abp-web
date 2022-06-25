@@ -36,6 +36,10 @@ class TouristAttraction extends Model
         
         return (float) $rating;
     }
+    
+    public function getimageurlAttribute() {
+        return (env('APP_ENV') == 'local') ? env('LOCAL_URL') . $this->image : env('PROD_URL') . $this->image;
+    }
 
     public function openclose() {
         return $this->hasMany(OpenClose::class, 'id_tourist_attraction', 'id');
