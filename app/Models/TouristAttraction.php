@@ -34,7 +34,7 @@ class TouristAttraction extends Model
 
         $rating = ($avgFive + $avgFour + $avgThree + $avgTwo + $avgOne) / $totalRating;
         
-        return (float) $rating;
+        return number_format((float)$rating, 2, '.', '');
     }
     
     public function getimageurlAttribute() {
